@@ -1,5 +1,7 @@
 <?php
-include 'includes/header_adm.php'
+
+include 'includes/header_adm.php';
+
 ?>
 
 <body>

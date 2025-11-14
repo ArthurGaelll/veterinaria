@@ -1,6 +1,7 @@
 <?php
-include 'includes/header_cliente.php'
-    ?>
+    include 'includes/header_cliente.php';    
+    
+?>
 
 <!-- Cabeçalho com imagem e frase de impacto -->
 <header class="masthead">

@@ -1,33 +1,35 @@
 <?php 
-    include_once '../includes/conexao.php';
+        session_start();    
+        include_once '../includes/conexao.php';
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+        $email = $_POST['email'];
+        $senhaDigitada = $_POST['senha']; // senha pura digitada
 
-    $sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha ";
+        // Busca apenas pelo email
+        $sql = "SELECT * FROM usuario WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
 
-    $stmt = $pdo->prepare($sql);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senha);
+        // Verifica se o usuário existe
+        if ($usuario && password_verify($senhaDigitada, $usuario['Senha'])) {
 
-    $stmt->execute();
+                // Login OK
+                 $_SESSION['usuario_id'] = $usuario['ID'] ?? $usuario['id'];
+                $_SESSION['usuario_nome'] = $usuario['Nome'];
+                $_SESSION['usuario_email'] = $usuario['Email'];
 
-    $registros = $stmt->rowCount();
+                header('Location: ../dashboard_cliente.php');
+                exit;
+}
 
-    if ($registros == 1) {
-            // echo 'OK VALIDADO';
-            header('Location: ../dashboard_cliente.php');
-    } else {
-            // echo 'NÂO VALIDADO';
-            header('Location: ../login_falha.php');
-    }
-
-
-
-
-
+        // Login inválido
+        header('Location: ../login_falha.php');
+        exit;
 ?>
+
 
 
 
