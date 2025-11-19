@@ -1,5 +1,15 @@
 <?php
 include 'includes/header_adm.php';
+session_start();
+
+// Verifica se usuário está logado
+if (!isset($_SESSION['usuario_id'], $_SESSION['usuario_email'])) {
+    // não logado
+    header('Location: index.php'); // ajuste caminho para sua página de login
+    exit;
+}
+
+// opcional: usuario logado. Pode usar $_SESSION['usuario_nome'] etc.
 ?>
 <main>
     <section class="py-5">

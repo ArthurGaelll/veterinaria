@@ -41,10 +41,11 @@ CREATE TABLE Dono_animal
 
 CREATE TABLE usuario
 ( 
+ ID_usuario INT PRIMARY KEY AUTO_INCREMENT,
  Telefone VARCHAR(20),  
  Tipo VARCHAR(20),  
  CPF VARCHAR(14),  
- Email VARCHAR(100),  
+ Email VARCHAR(100),
  Senha VARCHAR(255),  
  Nome VARCHAR(80)  
 ); 

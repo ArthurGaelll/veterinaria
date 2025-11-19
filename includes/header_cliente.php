@@ -35,7 +35,7 @@
                         <li class="nav-item"><a class="nav-link me-lg-3" href="meuspets.php">Meus Pets</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="consulta.php">Consulta</a></li>
                     </ul>
-                    <a href="index.php" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                    <a href="crud/logout.php" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                         <span class="d-flex align-items-center">
                             <span class="small">Sair</span>
                         </span>

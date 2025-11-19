@@ -3,13 +3,14 @@
     include 'includes/conexao.php';
     session_start();
 
-    // Temporário (depois tu usa $_SESSION['id_dono'])
-    $id_dono = 1;
+// Verifica se usuário está logado
+if (!isset($_SESSION['usuario_id'], $_SESSION['usuario_email'])) {
+    // não logado
+    header('Location: index.php'); // ajuste caminho para sua página de login
+    exit;
+}
 
-    // Buscar pets do dono logado
-    $stmt = $pdo->prepare("SELECT * FROM Animal WHERE idDono_animal = ?");
-    $stmt->execute([$id_dono]);
-    $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// opcional: usuario logado. Pode usar $_SESSION['usuario_nome'] etc.
     ?>
 
     <main class="meuspets-container">

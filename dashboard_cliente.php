@@ -1,7 +1,18 @@
 <?php
-    include 'includes/header_cliente.php';    
+    include 'includes/header_cliente.php';     
+    session_start();
+
+// Verifica se usuário está logado
+if (!isset($_SESSION['usuario_id'], $_SESSION['usuario_email'])) {
+    // não logado
+    header('Location: index.php'); // ajuste caminho para sua página de login
+    exit;
+}
+
+// opcional: usuario logado. Pode usar $_SESSION['usuario_nome'] etc.
+?>   
     
-?>
+
 
 <!-- Cabeçalho com imagem e frase de impacto -->
 <header class="masthead">
